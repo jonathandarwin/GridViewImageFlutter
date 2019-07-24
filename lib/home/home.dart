@@ -22,7 +22,7 @@ class HomeLayout extends StatelessWidget{
               onTap: (){
                 Navigator.push(context, 
                   MaterialPageRoute(
-                    builder: (context) => DetailLayout(listModel[i])
+                    builder: (context) => DetailLayout(listModel[i], i)
                   ));
               },
               child: Padding(                                            
@@ -33,13 +33,16 @@ class HomeLayout extends StatelessWidget{
                       child: Column(                      
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage(listModel[i].getImage()),
+                          Hero(
+                            tag: 'image$i',
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: AssetImage(listModel[i].getImage()),
+                                ),
                               ),
                             ),
                           ),

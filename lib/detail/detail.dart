@@ -4,8 +4,9 @@ import 'package:display_image/main_model.dart';
 class DetailLayout extends StatelessWidget{
 
   final MainModel model;
+  final int id;
 
-  DetailLayout(this.model);
+  DetailLayout(this.model, this.id);
 
   @override
   Widget build(BuildContext context){
@@ -17,7 +18,10 @@ class DetailLayout extends StatelessWidget{
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Image.asset(model.getImage()),          
+            Hero(
+              tag: 'image$id',
+              child: Image.asset(model.getImage()),
+            ),          
             Container(
               padding: EdgeInsets.all(10.0),
               child: Text(model.getTitle(),
